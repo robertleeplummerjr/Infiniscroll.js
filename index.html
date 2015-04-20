@@ -3,14 +3,58 @@
 <head lang="en">
 	<meta charset="UTF-8">
 	<title>InfinteScroll.js</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.4/cosmo/bootstrap.min.css">
+	<style>
+		body {
+			width: 400px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+	</style>
 </head>
 <body>
-<h1>InfinitScroll.js</h1>
-<blockquote>Look Ma!  I can scroll forever!</blockquote>
-<div id="scroller"></div>
+<div class="container">
+	<h1>Infiniscroll.js</h1>
+	<blockquote>Look Ma!  I can scroll forever!</blockquote>
+
+	<h3>Vertical</h3>
+	<div id="vert" class="well" style="height: 400px; width: 300px; position: relative"></div>
+
+	<h3>Horizontal</h3>
+	<div id="horiz" class="well" style="height: 400px; width: 300px; position: relative"></div>
+
+	<h3>Horizontal & Vertical</h3>
+	<div id="both" class="well" style="height: 400px; width: 300px; position: relative"></div>
+</div>
 </body>
 <script src="infinitescroll.js"></script>
+<script src="bower_components/MouseWheel/MouseWheel.js"></script>
 <script>
-	new InfiniteScroll(document.getElementById('scroller'));
+	var vert = document.getElementById('vert'),
+		iVert = new Infiniscroll(vert, {
+			horizontal: false,
+			scroll: function(y) {
+				vert.innerHTML = 'Item ' + y;
+			}
+		}),
+
+		horiz = document.getElementById('horiz'),
+		iHoriz = new Infiniscroll(horiz, {
+			vertical: false,
+			scroll: function(x) {
+				horiz.innerHTML = 'Horizontal Item ' + x
+			}
+		}),
+
+		both = document.getElementById('both'),
+		iBoth = new Infiniscroll(both, {
+			scroll: function(x, y) {
+				both.innerHTML = 'Horizontal Item ' + x + ', Vertical Item ' + y
+			}
+		});
+
+	new MouseWheel(vert, iVert._out);
+	new MouseWheel(horiz, iHoriz._out);
+	new MouseWheel(both, iBoth._out);
 </script>
 </html>
