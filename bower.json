@@ -20,6 +20,7 @@
     "tests"
   ],
   "dependencies": {
-    "MouseWheel": "~1.0.0"
+    "MouseWheel": "~1.0.0",
+    "megatable.js": "*"
   }
 }
