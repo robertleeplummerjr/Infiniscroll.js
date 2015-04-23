@@ -42,8 +42,8 @@ var Infiniscroll = (function(document) {
 		//height and width
 		if (settings.horizontal && settings.vertical) {
 			_out.onscroll = function () {
-				var x = (_out.scrollLeft / settings.scrollDensity) >> 1,
-					y = (_out.scrollTop / settings.scrollDensity) >> 1,
+				var x = (_out.scrollLeft / settings.horizontalScrollDensity) >> 1,
+					y = (_out.scrollTop / settings.verticalScrollDensity) >> 1,
 					totalHeight = _out.scrollTop + _out.offsetHeight,
 					totalWidth = _out.scrollLeft + _out.offsetWidth;
 
@@ -62,7 +62,7 @@ var Infiniscroll = (function(document) {
 		//height only
 		else if (settings.vertical) {
 			_out.onscroll = function () {
-				var y = (_out.scrollTop / settings.scrollDensity) >> 1,
+				var y = (_out.scrollTop / settings.verticalScrollDensity) >> 1,
 					totalHeight = _out.scrollTop + _out.offsetHeight;
 
 				if (totalHeight >= (_in.offsetHeight - (_out.offsetHeight / 2))) {
@@ -76,7 +76,7 @@ var Infiniscroll = (function(document) {
 		//width only
 		else if (settings.horizontal) {
 			_out.onscroll = function () {
-				var x = (_out.scrollLeft / settings.scrollDensity) >> 1,
+				var x = (_out.scrollLeft / settings.horizontalScrollDensity) >> 1,
 					totalWidth = _out.scrollLeft + _out.offsetWidth;
 
 				if (totalWidth >= (_in.offsetWidth - (_out.offsetWidth / 2))) {
@@ -172,7 +172,8 @@ var Infiniscroll = (function(document) {
 		horizontal: true,
 		vertical: true,
 		scroll: function() {},
-		scrollDensity: 5
+		horizontalScrollDensity: 5,
+		verticalScrollDensity: 5
 	};
 
 	return Infiniscroll;
