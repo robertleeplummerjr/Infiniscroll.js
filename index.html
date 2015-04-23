@@ -32,7 +32,7 @@
 	<div id="both" class="well" style="height: 400px; width: 300px; position: relative"></div>
 
 	<h3>Table (using MegaTable.js)</h3>
-	<div id="large-table" class="well" style="height: 400px; width: 300px; position: relative; overflow: hidden"></div>
+	<div id="large-table" style="height: 400px; width: 300px; position: relative; overflow: hidden"></div>
 	<!--Examples End-->
 
 
@@ -43,7 +43,6 @@
 </footer>
 </body>
 <script src="infinitescroll.js"></script>
-<script src="bower_components/thaw.js/thaw.js"></script>
 <script src="bower_components/MouseWheel/MouseWheel.js"></script>
 <script src="bower_components/megatable.js/megatable.js"></script>
 <script>
@@ -108,6 +107,6 @@
 		}),
 		largeTableM = new MouseWheel(largeTable, largeTableI._out);
 
-	largeTable.className = 'table';
+	largeTableMT.table.className += ' table table-striped';
 </script>
 </html>
