@@ -2,6 +2,7 @@ var Infiniscroll = (function(document) {
 	"use strict";
 
 	function Infiniscroll(el, settings) {
+		this.parent = el.parentNode;
 		this.el = el;
 
 		var defaults = Infiniscroll.defaultSettings,
@@ -165,6 +166,29 @@ var Infiniscroll = (function(document) {
 			style.padding = elStyle.padding;
 			style.borderWidth = elStyle.borderWidth;
 			style.borderRadius = elStyle.borderRadius;
+
+			return this;
+		},
+
+		applyLT: function() {
+			var _out = this._out;
+
+			_out.scrollLeft = this._scrollLeft;
+			_out.scrollTop = this._scrollTop;
+
+			this._scrollLeft = null;
+			this._scrollTop = null;
+
+			return this;
+		},
+
+		saveLT: function() {
+			var _out = this._out;
+
+			this._scrollLeft = this._scrollLeft || _out.scrollLeft;
+			this._scrollTop = this._scrollTop || _out.scrollTop;
+
+			return this;
 		}
 	};
 
