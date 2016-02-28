@@ -116,8 +116,6 @@ var Infiniscroll = (function(document) {
 			outerStyle.position = 'absolute';
 			outerStyle.width = '100px';
 			outerStyle.height = '100px';
-			outerStyle.top = '0';
-			outerStyle.left = '0';
 			outerStyle.visibility = 'hidden';
 			outerStyle.overflow = 'hidden';
 
@@ -158,8 +156,12 @@ var Infiniscroll = (function(document) {
 				style = out.style,
 				scrollSize = this.getScrollBarSize();
 
-			style.left = left + 'px';
-			style.top = top + 'px';
+			if (left !== 0) {
+				style.left = left + 'px';
+			}
+			if  (top !== 0) {
+				style.top = top + 'px';
+			}
 			style.width = (el.offsetWidth + (this.settings.vertical ? scrollSize.width : 0) + 'px');
 			style.height = (el.offsetHeight + (this.settings.horizontal ? scrollSize.height : 0) + 'px');
 			style.margin = elStyle.margin;
